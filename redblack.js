@@ -137,6 +137,16 @@
         })(this.root);
     };
     
+    Tree.prototype.map = function(iterator) {
+        var results = [];
+        
+        this.forEach(function(value, key, self) {
+            results.push(iterator(value, key, self));
+        });
+        
+        return results;
+    };
+    
     // Balancer
     // ---------------
     

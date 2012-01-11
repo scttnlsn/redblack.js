@@ -43,4 +43,14 @@ describe('Tree', function() {
         
         assert.equal(i, n);
     });
+    
+    it('maps nodes in-order', function() {
+        var mapped = tree.map(function(value, key) {
+             return key;
+        });
+        
+        helpers.loop(n, function(i) {
+            assert.equal(mapped[i], i);
+        });
+    });
 });
