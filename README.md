@@ -1,7 +1,7 @@
 redblack.js
 ===========
 
-Red-black tree for Node.js and the browser
+redblack.js is a red-black tree implementation for Node.js and the browser.
 
 Usage
 -----
