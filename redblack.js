@@ -125,6 +125,18 @@
         }
     };
     
+    Tree.prototype.forEach = function(iterator) {
+        var self = this;
+        
+        (function walk(node) {
+            if (node === null) return;
+            
+            walk(node.left);
+            iterator(node.value, node.key, self);
+            walk(node.right);
+        })(this.root);
+    };
+    
     // Balancer
     // ---------------
     

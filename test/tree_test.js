@@ -32,4 +32,15 @@ describe('Tree', function() {
         helpers.deleteRandom(n, tree);
         helpers.assertBalanced(tree);
     });
+    
+    it('traverses nodes in-order', function() {
+        var i = 0;
+        
+        tree.forEach(function(value, key) {
+            assert.equal(key, i);
+            i++;
+        });
+        
+        assert.equal(i, n);
+    });
 });
