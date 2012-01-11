@@ -33,18 +33,17 @@ describe('Tree', function() {
         helpers.assertBalanced(tree);
     });
     
-    it('traverses nodes in-order', function() {
+    it('traverses nodes in order', function() {
         var i = 0;
         
         tree.forEach(function(value, key) {
-            assert.equal(key, i);
-            i++;
+            assert.equal(key, i++);
         });
         
         assert.equal(i, n);
     });
     
-    it('maps nodes in-order', function() {
+    it('maps nodes in order', function() {
         var mapped = tree.map(function(value, key) {
              return key;
         });
@@ -52,5 +51,28 @@ describe('Tree', function() {
         helpers.loop(n, function(i) {
             assert.equal(mapped[i], i);
         });
+    });
+    
+    it('walks node ranges in order', function() {
+        // Start and end
+        var i = 123;
+        tree.range(123, 4567).forEach(function(value, key) {
+            assert.equal(key, i++);
+        });
+        assert.equal(i, 4568);
+        
+        // Start
+        i = 123;
+        tree.range(123).forEach(function(value, key) {
+            assert.equal(key, i++);
+        });
+        assert.equal(i, n);
+        
+        // End
+        i = 0;
+        tree.range(undefined, 4567).forEach(function(value, key) {
+            assert.equal(key, i++);
+        });
+        assert.equal(i, 4568);
     });
 });

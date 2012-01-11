@@ -51,6 +51,44 @@
         return this.parent.sibling();
     };
     
+    // Cursor
+    // ---------------
+    
+    function Cursor(tree, start, end) {
+        this.tree = tree;
+        this.start = start;
+        this.end = end;
+        
+        var self = this;
+        this.walk = function walk(node, iterator) {
+            if (node === null) return;
+            
+            if (start !== undefined && node.key < start) {
+                walk(node.right, iterator);
+            } else if (end !== undefined && node.key > end) {
+                walk(node.left, iterator);
+            } else {
+                walk(node.left, iterator);
+                iterator(node.value, node.key, self.tree);
+                walk(node.right, iterator);
+            }
+        };
+    };
+    
+    Cursor.prototype.forEach = function(iterator) {
+        this.walk(this.tree.root, iterator);
+    };
+    
+    Cursor.prototype.map = function(iterator) {
+        var results = [];
+        
+        this.forEach(function(value, key, tree) {
+            results.push(iterator(value, key, tree));
+        });
+        
+        return results;
+    };
+    
     // Tree
     // ---------------
     
@@ -125,27 +163,20 @@
         }
     };
     
-    Tree.prototype.forEach = function(iterator) {
-        var self = this;
-        
-        (function walk(node) {
-            if (node === null) return;
-            
-            walk(node.left);
-            iterator(node.value, node.key, self);
-            walk(node.right);
-        })(this.root);
+    Tree.prototype.range = function(start, end) {
+        return new Cursor(this, start, end);
     };
     
-    Tree.prototype.map = function(iterator) {
-        var results = [];
-        
-        this.forEach(function(value, key, self) {
-            results.push(iterator(value, key, self));
-        });
-        
-        return results;
-    };
+    // Proxy cursor methods
+    for (var method in Cursor.prototype) {
+        if (Cursor.prototype.hasOwnProperty(method)) {
+            var func = Cursor.prototype[method];
+            Tree.prototype[method] = function() {
+                var cursor = new Cursor(this);
+                return func.apply(cursor, arguments);
+            };
+        }
+    }
     
     // Balancer
     // ---------------
