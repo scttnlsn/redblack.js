@@ -3,8 +3,7 @@ redblack.js
 
 redblack.js is a red-black tree implementation for Node.js and the browser.
 
-Usage
------
+## Usage
 
     var tree = redblack.tree();
     
@@ -18,8 +17,7 @@ Usage
         console.log(key + '=' + value);
     });
 
-Download
---------
+## Download
 
 Releases are available on [GitHub](https://github.com/scttnlsn/redblack.js/downloads)
 or via [NPM](http://search.npmjs.org/#/redblack).
@@ -30,12 +28,9 @@ or via [NPM](http://search.npmjs.org/#/redblack).
 
 **Production:**  [redblack.min.js](https://raw.github.com/scttnlsn/redblack.js/master/redblack.min.js)
 
-API
----
+## Tree API
 
-### Tree
-
-#### insert(key, value)
+### insert(key, value)
 
 Insert the given key/value pair into the tree.
 
@@ -44,7 +39,7 @@ Insert the given key/value pair into the tree.
 * key
 * value
 
-#### get(key)
+### get(key)
 
 Get the value mapped to the given key or `null` if no such value exists.
 
@@ -52,7 +47,7 @@ Get the value mapped to the given key or `null` if no such value exists.
 
 * key
 
-#### delete(key)
+### delete(key)
 
 Remove the given key from the tree
 
@@ -60,27 +55,28 @@ Remove the given key from the tree
 
 * key
 
-#### range(start, end)
+### range(start, end)
 
-Returns a `Cursor` (see below) for traversing the tree in the given range (inclusive).
+Returns a [Cursor](#cursor) (see below) for traversing the tree in the given range (inclusive).
 
 *Arguments:*
 
 * start - the lower bound of the range, if `undefined` then assumed to be the minimum value in the tree
 * end - the upper bound of the range, if `undefined` the assumed to be the maximum value in the tree
 
-#### forEach(iterator)
+### forEach(iterator)
 
-Cursor shortcut for iterating over the entire tree (see [forEach](#forEach) below).
+[Cursor](#cursor) shortcut for iterating over the entire tree (see [forEach](#forEach) below).
 
-#### map(iterator)
+### map(iterator)
 
-Cursor shortcut for mapping over the entire tree (see [map](#map) below).
+[Cursor](#cursor) shortcut for mapping over the entire tree (see [map](#map) below).
 
-### Cursor
+<a name="cursor" />
+## Cursor API
 
 <a name="forEach" />
-#### forEach(iterator)
+### forEach(iterator)
 
 Iterate over a set of nodes in order.
 
@@ -89,7 +85,7 @@ Iterate over a set of nodes in order.
 * iterator(value, key, tree)
 
 <a name="map" />
-#### map(iterator)
+### map(iterator)
 
 Map over a set of nodes in order.
 
