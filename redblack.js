@@ -10,7 +10,7 @@
         root.redblack = redblack;
     }
     
-    redblack.VERSION = '0.1.0';
+    redblack.VERSION = '0.1.1';
     
     redblack.noConflict = function() {
         root.redblack = orig;
