@@ -3,7 +3,8 @@ redblack.js
 
 redblack.js is a red-black tree implementation for Node.js and the browser.
 
-## Usage
+Usage
+-----
 
     var tree = redblack.tree();
     
@@ -17,7 +18,8 @@ redblack.js is a red-black tree implementation for Node.js and the browser.
         console.log(key + '=' + value);
     });
 
-## Download
+Download
+--------
 
 Releases are available on [GitHub](https://github.com/scttnlsn/redblack.js/downloads)
 or via [NPM](http://search.npmjs.org/#/redblack).
@@ -28,7 +30,8 @@ or via [NPM](http://search.npmjs.org/#/redblack).
 
 **Production:**  [redblack.min.js](https://raw.github.com/scttnlsn/redblack.js/master/redblack.min.js)
 
-## Tree API
+Tree API
+--------
 
 ### insert(key, value)
 
@@ -73,7 +76,8 @@ Returns a [Cursor](#cursor) (see below) for traversing the tree in the given ran
 [Cursor](#cursor) shortcut for mapping over the entire tree (see [map](#map) below).
 
 <a name="cursor" />
-## Cursor API
+Cursor API
+----------
 
 <a name="forEach" />
 ### forEach(iterator)
