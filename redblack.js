@@ -281,9 +281,9 @@
         node.parent.color = BLACK;
         grandparent.color = RED;
         
-        if (node === node.parent.left && node.parent === grandparent.right) {
+        if (node === node.parent.left && node.parent === grandparent.left) {
             this.rotateRight(grandparent);
-        } else {
+        } else if (node === node.parent.right && node.parent === grandparent.right) {
             this.rotateLeft(grandparent);
         }
     };
